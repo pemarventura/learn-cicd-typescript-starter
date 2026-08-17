@@ -18,5 +18,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Node version
-        run: node --version
+      - name: Use same npm as the lockfile was written with
+        run: npm i -g npm@11.12.1
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test -- --coverage
